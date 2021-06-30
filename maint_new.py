@@ -1,4 +1,5 @@
 import pygame 
+import time
 #importujemy klasy:
 from paddle import Paddle
 from ball import Ball
@@ -7,6 +8,7 @@ pygame.init()
 #KOLORKI DO GRY
 BLACK = (0,0,0)
 PINK = (255,192,203)
+WHITE = (255,255,255)
 
 #OKNO GRY
 size = (700,500)
@@ -78,9 +80,9 @@ while gameON:#jesli gra odpalona to....
         ball.rect.x = 350
         ball.rect.y = 250
         ball.velocity[0] = -ball.velocity[0]
-    if ball.rect.y>=490:#sufit
+    if ball.rect.y>=483:#sufit
         ball.velocity[1] = -ball.velocity[1]
-    if ball.rect.y<=10:#podloga
+    if ball.rect.y<=17:#podloga
         ball.velocity[1] = -ball.velocity[1]
     
 
@@ -101,9 +103,9 @@ while gameON:#jesli gra odpalona to....
             new_ball.rect.x = 350
             new_ball.rect.y = 250
             new_ball.velocity[0] = -new_ball.velocity[0]
-        if new_ball.rect.y>=490:#sufit
+        if new_ball.rect.y>=483:#sufit
             new_ball.velocity[1] = -new_ball.velocity[1]
-        if new_ball.rect.y<=10:#podloga
+        if new_ball.rect.y<=17:#podloga
             new_ball.velocity[1] = -new_ball.velocity[1]
   
     
@@ -121,9 +123,29 @@ while gameON:#jesli gra odpalona to....
     screen.blit(text, (250,10))#teraz go wyswietlamy dopiero
     text = font.render(str(scoreB),1,PINK)#tworzymy wynik gracza prawego...
     screen.blit(text, (420,10))# i go wsywietlamy
+    #sprawdzamy wyniki jesli ktorys z nich wynosi podana wartosc to wypelniamy okno gry na czarno i na tym wyswietlamy napis ktory gracz wygral po czym odczekujemy podana ilosc sekund i wylaczamy gre
+    if scoreA >= 3:
+        screen.fill(BLACK)
+        textWinA = font.render(str("Left Player wins!!! gg"),2,WHITE)
+        screen.blit(textWinA, (75,250))
+        pygame.display.flip()
+        time.sleep(5)
+
+        gameON = False
+
+    elif scoreB >= 3:
+        screen.fill(BLACK)
+        textWinB = font.render(str("Right Player wins!!! gg"),2,WHITE)
+        screen.blit(textWinB, (75,250))
+        pygame.display.flip()
+        time.sleep(5)
+
+        gameON = False
+    #jesli wynik jeszcze nie doszedl do wyznaczonego pulapu to kontynujemy gra normalnie
+    else:
+        pygame.display.flip()#teraz wyswietlamy wszystko na ekranie
 
 
-    pygame.display.flip()#teraz wyswietlamy wszystko na ekranie
 
     clock = pygame.time.Clock()
     clock.tick(60)#to powinno dac limit klatek nma 60 fps ale nwm czemu clock nie dziala :( ||||jednak dziala, trzeba bylo dac ta linijke wyzej by go tak jakby "stworzyc" :)
