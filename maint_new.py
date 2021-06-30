@@ -94,17 +94,17 @@ while gameON:#jesli gra odpalona to....
             scoreA+=1#gracz po lewej zdobywa punkt
             new_ball.rect.x = 350
             new_ball.rect.y = 250
-            new_ball.velocity[0] = -ball.velocity[0]#jesli pileczka zbliza sie do sciany(zauwaz ze mamy zapas 10 pikseli bo pileczka ma predkosc maksymalna bodajze 8 wiec tak jakby chcemy byc pewni ze nie wyleci poza mape jednym dlugim skokiem z np. 695 na 703) nadajemy jej przseciwnego kierunku/zwrotu (wsm to sazm juz nwm ktore to ktore xd)
+            new_ball.velocity[0] = -new_ball.velocity[0]#jesli pileczka zbliza sie do sciany(zauwaz ze mamy zapas 10 pikseli bo pileczka ma predkosc maksymalna bodajze 8 wiec tak jakby chcemy byc pewni ze nie wyleci poza mape jednym dlugim skokiem z np. 695 na 703) nadajemy jej przseciwnego kierunku/zwrotu (wsm to sazm juz nwm ktore to ktore xd)
     #anyway to co wyzej tyczy sie tez tych ponizej
         if new_ball.rect.x<=0:#lewa sciana
             scoreB+=1#gracz po prawej zdobywa punkt
             new_ball.rect.x = 350
             new_ball.rect.y = 250
-            new_ball.velocity[0] = -ball.velocity[0]
+            new_ball.velocity[0] = -new_ball.velocity[0]
         if new_ball.rect.y>=490:#sufit
-            new_ball.velocity[1] = -ball.velocity[1]
+            new_ball.velocity[1] = -new_ball.velocity[1]
         if new_ball.rect.y<=10:#podloga
-            new_ball.velocity[1] = -ball.velocity[1]
+            new_ball.velocity[1] = -new_ball.velocity[1]
   
     
   
