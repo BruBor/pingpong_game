@@ -1,4 +1,3 @@
-
 import pygame
 from random import randint #bedzie potrzebne do nadania losowej predkosci poczatkowej dla pilki
 BLACK = (0,0,0)
